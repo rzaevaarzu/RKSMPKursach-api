@@ -1,0 +1,13 @@
+---
+server:
+  server.port: 8080
+
+spring:
+  datasource:
+    driver-class-name: org.postgresql.Driver
+    url: jdbc:postgresql://localhost/RKSMPKursach
+    username: postgres
+    password: arzu12345
+  jpa:
+    hibernate:
+      ddl-auto: update
