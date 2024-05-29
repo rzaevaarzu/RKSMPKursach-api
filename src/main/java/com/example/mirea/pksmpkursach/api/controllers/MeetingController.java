@@ -64,6 +64,7 @@ public class MeetingController {
     public MeetingDto createMeeting(@RequestBody MeetingDto meetingDto) {
 
         Meeting meeting = meetingRepository.saveAndFlush(meetingDtoFactory.fromMeetingDto(meetingDto));
+        System.out.println(meetingDto);
 ////                Meeting.builder()
 ////                        .date(meetingDto.getDate())
 ////                        .time(meetingDto.getTime())

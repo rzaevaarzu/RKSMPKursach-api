@@ -5,9 +5,9 @@ server:
 spring:
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://localhost/RKSMPKursach
+    url: jdbc:postgresql://localhost:5432/KursachRA
     username: postgres
-    password: arzu12345
+    password: Lyambda_762221
   jpa:
     hibernate:
       ddl-auto: update

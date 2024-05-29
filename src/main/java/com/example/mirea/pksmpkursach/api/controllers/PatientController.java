@@ -60,16 +60,38 @@ public class PatientController {
 
 
     @PostMapping(LOGIN)
-    public ResponseEntity<Object> login(@RequestBody LoginDto body, HttpServletResponse response) {
+    public PatientDto login(@RequestBody LoginDto body, HttpServletResponse response) {
         Patient patient = patientRepository.findByEmail(body.getEmail());
         if (patient != null) {
-            if (body.getPassword() != patient.getPassword()) {
-                return ResponseEntity.badRequest().body(new Message("Invalid login or password!"));
+            if (!body.getPassword().equals(patient.getPassword())) {
+                return patientDtoFactory.makePatientDto(
+                        Patient.builder()
+                                .id(0)
+                                .fio("")
+                                .age("")
+                                .email("")
+                                .height("")
+                                .weight("")
+                                .phone("")
+                                .password("")
+                                .build()
+                );
             } else {
-                return ResponseEntity.ok(patientDtoFactory.makePatientDto(patient));
+                return patientDtoFactory.makePatientDto(patient);
             }
         }
-        return ResponseEntity.badRequest().body(new Message("Invalid login or password!"));
+        return patientDtoFactory.makePatientDto(
+                Patient.builder()
+                        .id(0)
+                        .fio("")
+                        .age("")
+                        .email("")
+                        .height("")
+                        .weight("")
+                        .phone("")
+                        .password("")
+                        .build()
+        );
     }
 
 
